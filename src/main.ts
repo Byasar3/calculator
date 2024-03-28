@@ -1,12 +1,10 @@
 // will receive inputs from event listeners, event handlers and query selectors
 
 // query selectors
+const display = document.querySelector<HTMLElement>("#display");
 const clearButton = document.querySelector<HTMLButtonElement>("#clear-button");
-console.log(clearButton);
-
 const deleteButton =
   document.querySelector<HTMLButtonElement>("#delete-button");
-
 const divide = document.querySelector<HTMLButtonElement>("#divide");
 const multiply = document.querySelector<HTMLButtonElement>("#multiply");
 const subtract = document.querySelector<HTMLButtonElement>("#subtract");
@@ -42,32 +40,38 @@ if (
 // equals -> calls calculate function
 
 const handleClearButtonClick = (event: Event) => {
-  console.log("event:", event);
+  // console.log("event:", event);
 };
 
 const handleDeleteButtonClick = (event: Event) => {
-  console.log(event);
+  // console.log(event);
 };
 
 const handleDivideButtonClick = (event: Event) => {
-  console.log(event);
+  // console.log(event);
 };
 
 const handleMultiplyButtonClick = (event: Event) => {
-  console.log(event);
+  // console.log(event);
 };
 
 const handleSubtractButtonClick = (event: Event) => {
-  console.log(event);
+  // console.log(event);
 };
 
 const handleAdditionButtonClick = (event: Event) => {
-  console.log(event);
+  // console.log(event);
 };
 
 const handleNumberButtonClick = (event: Event) => {
-  console.log(event);
+  const target = event.target as HTMLElement;
+  // console.log(target);
+  const numberInput = parseInt(target.innerHTML);
+  console.log("number clicked", numberInput);
+  calculate(numberInput, 5);
+  return numberInput;
 };
+
 // calculate function
 // const result = empty
 // const the first input number = whatever input is set as
@@ -76,6 +80,18 @@ const handleNumberButtonClick = (event: Event) => {
 // then if statements to check which operator was use, and depending on that,
 // do return result = (the first input number) [operation] (the second input number)
 // else return error
+
+const calculate = (
+  firstInputNumber: number,
+  secondInputNumber: number
+): number => {
+  let result = 0;
+  firstInputNumber = firstInputNumber;
+  secondInputNumber = secondInputNumber;
+  result = firstInputNumber + secondInputNumber;
+  console.log("result", result);
+  return result;
+};
 
 // EVENT LISTENERS
 
