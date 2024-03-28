@@ -9,16 +9,7 @@ const subtract = document.querySelector("#subtract");
 const addition = document.querySelector("#addition");
 const equals = document.querySelector("#equals");
 const decimal = document.querySelector("#decimal");
-const number1 = document.querySelector("#number1");
-const number2 = document.querySelector("#number2");
-const number3 = document.querySelector("#number3");
-const number4 = document.querySelector("#number4");
-const number5 = document.querySelector("#number5");
-const number6 = document.querySelector("#number6");
-const number7 = document.querySelector("#number7");
-const number8 = document.querySelector("#number8");
-const number9 = document.querySelector("#number9");
-const number0 = document.querySelector("#number0");
+const numbers = document.querySelectorAll("#number");
 
 // throw errors if !
 
@@ -30,16 +21,7 @@ if (
   !subtract ||
   !addition ||
   !decimal ||
-  !number1 ||
-  !number2 ||
-  !number3 ||
-  !number4 ||
-  !number5 ||
-  !number6 ||
-  !number7 ||
-  !number8 ||
-  !number9 ||
-  number0
+  !numbers
 ) {
   throw new Error("Issue with selectors");
 }
@@ -55,6 +37,33 @@ if (
 
 // equals -> calls calculate function
 
+const handleClearButtonClick = (event : Event) => {
+
+}
+
+const handleDeleteButtonClick (event: Event) => {
+
+}
+
+const handleDivideButtonClick (event : Event) => {
+
+}
+
+const handleMultiplyButtonClick (event : Event) => {
+
+}
+
+const handleSubtractButtonClick (event : Event) => {
+
+}
+
+const handleAdditionButtonClick (event : Event) => {
+
+}
+
+const handleNumberButtonClick (event : Event) => {
+
+}
 // calculate function
 // const result = empty
 // const the first input number = whatever input is set as
@@ -64,7 +73,18 @@ if (
 // do return result = (the first input number) [operation] (the second input number)
 // else return error
 
-// event listeners
+// EVENT LISTENERS
+
+clearButton.addEventListener("click", handleClearButtonClick);
+deleteButton.addEventListener("click", handleDeleteButtonClick);
+divide.addEventListener("click", handleDivideButtonClick);
+multiply.addEventListener("click", handleMultiplyButtonClick);
+subtract.addEventListener("click", handleSubtractButtonClick);
+addition.addEventListener("click", handleAdditionButtonClick);
+numbers.forEach((numberButton) => {
+  numberButton.addEventListener("click", handleNumberButtonClick)
+})
+
 
 // needs to listen to when button is clicked
 
