@@ -46,7 +46,27 @@ if (
 
 // event handlers
 
+// when button is clicked what happens?
+
+// number button -> displayed on 'screen'
+// when display changes, could use .innertext?
+
+// operation button -> display on screen and maybe call calculate function?
+
+// equals -> calls calculate function
+
+// calculate function
+// const result = empty
+// const the first input number = whatever input is set as
+// const the second input number = whatever the input is set as
+// check that numbers aren't empty or null
+// then if statements to check which operator was use, and depending on that,
+// do return result = (the first input number) [operation] (the second input number)
+// else return error
+
 // event listeners
+
+// needs to listen to when button is clicked
 
 // needs to one of a few maths operations
 
