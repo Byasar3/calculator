@@ -1,8 +1,11 @@
+// calculator object to store incoming information ?
+type calculation = (firstInputNumber: number, secondInputNumber: number) => {};
+
 // will receive inputs from event listeners, event handlers and query selectors
 
 // query selectors
 const display = document.querySelector<HTMLElement>("#display");
-const clearButton = document.querySelector<HTMLButtonElement>("#clear-button");
+const clearButton = document.querySelector<HTMLElement>("#clear-button");
 const deleteButton =
   document.querySelector<HTMLButtonElement>("#delete-button");
 const divide = document.querySelector<HTMLButtonElement>("#divide");
@@ -28,7 +31,7 @@ if (
   throw new Error("Issue with selectors");
 }
 
-// event handlers
+// --- EVENT HANDLERS ---
 
 // when button is clicked what happens?
 
@@ -40,7 +43,10 @@ if (
 // equals -> calls calculate function
 
 const handleClearButtonClick = (event: Event) => {
-  // console.log("event:", event);
+  const target = event.target as HTMLElement;
+  console.log();
+  // needs to get something that represents whether it's been clicked or not
+  // that determins whether the clear function (not currently written) goes ahead)
 };
 
 const handleDeleteButtonClick = (event: Event) => {
@@ -66,34 +72,22 @@ const handleAdditionButtonClick = (event: Event) => {
 const handleNumberButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
   // console.log(target);
-  const numberInput = parseInt(target.innerHTML);
-  console.log("number clicked", numberInput);
-  calculate(numberInput, 5);
-  return numberInput;
+  const numberInputAsString = target.innerHTML;
+  console.log("number clicked", numberInputAsString);
+  // calculate(numberInput, 5);
+
+  // getting the number input (in string form and displaying it on screen)
+  showInputOnDisplay(numberInputAsString);
+
+  // now converting to int to be able to use with calculator
+  const firstNumberInputAsFloat = parseFloat(numberInputAsString);
+  // need to input these numbers into the calculate function
+  // hard code 2nd number for now
+  const secondNumberInputAsFloat = 2;
+  calculate(firstNumberInputAsFloat, secondNumberInputAsFloat);
 };
 
-// calculate function
-// const result = empty
-// const the first input number = whatever input is set as
-// const the second input number = whatever the input is set as
-// check that numbers aren't empty or null
-// then if statements to check which operator was use, and depending on that,
-// do return result = (the first input number) [operation] (the second input number)
-// else return error
-
-const calculate = (
-  firstInputNumber: number,
-  secondInputNumber: number
-): number => {
-  let result = 0;
-  firstInputNumber = firstInputNumber;
-  secondInputNumber = secondInputNumber;
-  result = firstInputNumber + secondInputNumber;
-  console.log("result", result);
-  return result;
-};
-
-// EVENT LISTENERS
+// --- EVENT LISTENERS ---
 
 clearButton.addEventListener("click", handleClearButtonClick);
 deleteButton.addEventListener("click", handleDeleteButtonClick);
@@ -127,3 +121,32 @@ numbers.forEach((numberButton) => {
 // console.log(value2);
 // console.log(value3);
 // console.log(value4);
+
+// --- FUNCTIONS ---
+
+// calculate function
+// const result = empty
+// const the first input number = whatever input is set as
+// const the second input number = whatever the input is set as
+// check that numbers aren't empty or null
+// then if statements to check which operator was use, and depending on that,
+// do return result = (the first input number) [operation] (the second input number)
+// else return error
+
+const calculate = (
+  firstInputNumber: number,
+  secondInputNumber: number
+): number => {
+  let result = 0;
+  firstInputNumber = firstInputNumber;
+  secondInputNumber = secondInputNumber;
+  result = firstInputNumber + secondInputNumber;
+  console.log("result", result);
+  return result;
+};
+
+// need a way to show the user what they've typed - using display
+
+let showInputOnDisplay = (numberInput: string) => {
+  display?.append(numberInput);
+};
