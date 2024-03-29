@@ -8,26 +8,18 @@ const display = document.querySelector<HTMLElement>("#display");
 const clearButton = document.querySelector<HTMLElement>("#clear-button");
 const deleteButton =
   document.querySelector<HTMLButtonElement>("#delete-button");
-const divide = document.querySelector<HTMLButtonElement>("#divide");
-const multiply = document.querySelector<HTMLButtonElement>("#multiply");
-const subtract = document.querySelector<HTMLButtonElement>("#subtract");
-const addition = document.querySelector<HTMLButtonElement>("#addition");
-const equals = document.querySelector<HTMLButtonElement>("#equals");
-const decimal = document.querySelector<HTMLButtonElement>("#decimal");
-const numbers = document.querySelectorAll<HTMLButtonElement>("#number");
+// const divide = document.querySelector<HTMLButtonElement>("#divide");
+// const multiply = document.querySelector<HTMLButtonElement>("#multiply");
+// const subtract = document.querySelector<HTMLButtonElement>("#subtract");
+// const addition = document.querySelector<HTMLButtonElement>("#addition");
+// const equals = document.querySelector<HTMLButtonElement>("#equals");
+// const decimal = document.querySelector<HTMLButtonElement>("#decimal");
+const buttons = document.querySelectorAll<HTMLButtonElement>("#button");
+console.log(buttons);
 
 // throw errors if !
 
-if (
-  !clearButton ||
-  !deleteButton ||
-  !divide ||
-  !multiply ||
-  !subtract ||
-  !addition ||
-  !decimal ||
-  !numbers
-) {
+if (!buttons) {
   throw new Error("Issue with selectors");
 }
 
@@ -54,6 +46,9 @@ const handleDeleteButtonClick = (event: Event) => {
 };
 
 const handleDivideButtonClick = (event: Event) => {
+  const target = event.target as HTMLElement;
+  const divisionClicked = target.innerHTML;
+  return divisionClicked;
   // console.log(event);
 };
 
@@ -69,34 +64,60 @@ const handleAdditionButtonClick = (event: Event) => {
   // console.log(event);
 };
 
+// const handleNumberButtonClick = (event: Event) => {
+//   const target = event.target as HTMLElement;
+//   // console.log(target);
+//   const numberInputAsString = target.innerHTML;
+//   console.log("number clicked", numberInputAsString);
+//   // calculate(numberInput, 5);
+
+//   // getting the number input (in string form and displaying it on screen)
+//   showInputOnDisplay(numberInputAsString);
+
+//   // now converting to int to be able to use with calculator
+//   const firstNumberInputAsFloat = parseFloat(numberInputAsString);
+//   // need to input these numbers into the calculate function
+//   // hard code 2nd number for now
+//   const secondNumberInputAsFloat = 2;
+//   calculate(firstNumberInputAsFloat, secondNumberInputAsFloat);
+// };
+
 const handleNumberButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
+  console.log(target);
+
   // console.log(target);
-  const numberInputAsString = target.innerHTML;
-  console.log("number clicked", numberInputAsString);
+  const buttonContent = target.innerHTML;
+  console.log("number clicked", buttonContent);
+
+  if (buttonContent === "+" || "-" || "/" || "*") {
+    console.log("targetting certain bit", buttonContent);
+  }
+  // console.log(numberInputAsString);
+
   // calculate(numberInput, 5);
 
   // getting the number input (in string form and displaying it on screen)
-  showInputOnDisplay(numberInputAsString);
+  // showInputOnDisplay(numberInputAsString);
 
   // now converting to int to be able to use with calculator
-  const firstNumberInputAsFloat = parseFloat(numberInputAsString);
+  // const firstNumberInputAsFloat = parseFloat(numberInputAsString);
   // need to input these numbers into the calculate function
   // hard code 2nd number for now
-  const secondNumberInputAsFloat = 2;
-  calculate(firstNumberInputAsFloat, secondNumberInputAsFloat);
+  // const secondNumberInputAsFloat = 2;
+  // calculate(firstNumberInputAsFloat, secondNumberInputAsFloat);
 };
 
 // --- EVENT LISTENERS ---
 
-clearButton.addEventListener("click", handleClearButtonClick);
-deleteButton.addEventListener("click", handleDeleteButtonClick);
-divide.addEventListener("click", handleDivideButtonClick);
-multiply.addEventListener("click", handleMultiplyButtonClick);
-subtract.addEventListener("click", handleSubtractButtonClick);
-addition.addEventListener("click", handleAdditionButtonClick);
-numbers.forEach((numberButton) => {
-  numberButton.addEventListener("click", handleNumberButtonClick);
+// clearButton.addEventListener("click", handleClearButtonClick);
+// deleteButton.addEventListener("click", handleDeleteButtonClick);
+// divide.addEventListener("click", handleDivideButtonClick);
+// multiply.addEventListener("click", handleMultiplyButtonClick);
+// subtract.addEventListener("click", handleSubtractButtonClick);
+// addition.addEventListener("click", handleAdditionButtonClick);
+buttons.forEach((button) => {
+  button.addEventListener("click", handleNumberButtonClick);
 });
 
 // needs to listen to when button is clicked
@@ -140,6 +161,7 @@ const calculate = (
   let result = 0;
   firstInputNumber = firstInputNumber;
   secondInputNumber = secondInputNumber;
+  //
   result = firstInputNumber + secondInputNumber;
   console.log("result", result);
   return result;
