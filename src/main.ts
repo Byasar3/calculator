@@ -1,174 +1,159 @@
 // calculator object to store incoming information ?
-type calculation = (firstInputNumber: number, secondInputNumber: number) => {};
+type calculation = {
+  firstInputNumber: number;
+  secondInputNumber: number;
+  operationClicked: string;
+};
 
-// will receive inputs from event listeners, event handlers and query selectors
+const currentCalculation: calculation = {
+  firstInputNumber: 0,
+  secondInputNumber: 0,
+  operationClicked: "",
+};
 
-// query selectors
-const display = document.querySelector<HTMLElement>("#display");
+// --- QUERY SELECTORS ---
+const previousEnteredNumber = document.querySelector<HTMLElement>(
+  "#previous-entered-number"
+);
+const currentEnteredNumber = document.querySelector<HTMLElement>(
+  "#current-entered-number"
+);
 const clearButton = document.querySelector<HTMLElement>("#clear-button");
 const deleteButton =
   document.querySelector<HTMLButtonElement>("#delete-button");
-// const divide = document.querySelector<HTMLButtonElement>("#divide");
-// const multiply = document.querySelector<HTMLButtonElement>("#multiply");
-// const subtract = document.querySelector<HTMLButtonElement>("#subtract");
-// const addition = document.querySelector<HTMLButtonElement>("#addition");
-// const equals = document.querySelector<HTMLButtonElement>("#equals");
-// const decimal = document.querySelector<HTMLButtonElement>("#decimal");
-const buttons = document.querySelectorAll<HTMLButtonElement>("#button");
-console.log(buttons);
+const buttons = document.querySelectorAll<HTMLButtonElement>(".number");
+const operations = document.querySelectorAll<HTMLButtonElement>(".operation");
+const equalsButton = document.querySelector<HTMLButtonElement>("#equals");
 
-// throw errors if !
-
-if (!buttons) {
+// --- GUARD CLAUSES ---
+if (
+  !previousEnteredNumber ||
+  !currentEnteredNumber ||
+  !clearButton ||
+  !deleteButton ||
+  !buttons ||
+  !operations ||
+  !equalsButton
+) {
   throw new Error("Issue with selectors");
 }
 
+// --- FUNCTIONS ---
+
+// const calculate = (
+//   firstInputNumber: number,
+//   secondInputNumber: number,
+//   operationClicked: string
+// ): number => {
+//   let result = 0;
+//   const firstNumber = firstInputNumber;
+//   const secondNumber = secondInputNumber;
+//   if (operationClicked === "+") {
+//     return (result = firstNumber + secondNumber);
+//   } else if (operationClicked === "-") {
+//     return (result = firstNumber - secondNumber);
+//   } else if (operationClicked === "*") {
+//     return (result = firstNumber * secondNumber);
+//   } else {
+//     return (result = firstNumber / secondNumber);
+//   }
+// };
+
+const calculate = () => {
+  let result = 0;
+  switch (currentCalculation.operationClicked) {
+    case "+":
+      result =
+        currentCalculation.firstInputNumber +
+        currentCalculation.secondInputNumber;
+      break;
+    case "-":
+      result =
+        currentCalculation.firstInputNumber -
+        currentCalculation.secondInputNumber;
+      break;
+    case "*":
+      result =
+        currentCalculation.firstInputNumber *
+        currentCalculation.secondInputNumber;
+      break;
+    case "/":
+      result =
+        currentCalculation.firstInputNumber /
+        currentCalculation.secondInputNumber;
+      break;
+  }
+  currentEnteredNumber!.textContent = result.toString();
+};
+
+// need a way to show the user what they've typed
+
+let updateScreen = () => {
+  currentEnteredNumber.textContent = `${currentCalculation.firstInputNumber} ${currentCalculation.operationClicked} ${currentCalculation.secondInputNumber}`;
+};
+
+// need a function to determine the operation chosen
+
+const operationChosen = () => {};
+
 // --- EVENT HANDLERS ---
-
-// when button is clicked what happens?
-
-// number button -> displayed on 'screen'
-// when display changes, could use .innertext?
-
-// operation button -> display on screen and maybe call calculate function?
-
-// equals -> calls calculate function
 
 const handleClearButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
-  console.log();
-  // needs to get something that represents whether it's been clicked or not
-  // that determins whether the clear function (not currently written) goes ahead)
+  console.log(target);
 };
 
 const handleDeleteButtonClick = (event: Event) => {
-  // console.log(event);
+  console.log(event);
 };
 
-const handleDivideButtonClick = (event: Event) => {
+const handleOperationButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
-  const divisionClicked = target.innerHTML;
-  return divisionClicked;
-  // console.log(event);
+  const operationClicked = target.innerHTML;
+  currentCalculation.operationClicked = operationClicked;
 };
 
-const handleMultiplyButtonClick = (event: Event) => {
-  // console.log(event);
+const handleEqualsButtonClick = (event: Event) => {
+  return event.target;
 };
-
-const handleSubtractButtonClick = (event: Event) => {
-  // console.log(event);
-};
-
-const handleAdditionButtonClick = (event: Event) => {
-  // console.log(event);
-};
-
-// const handleNumberButtonClick = (event: Event) => {
-//   const target = event.target as HTMLElement;
-//   // console.log(target);
-//   const numberInputAsString = target.innerHTML;
-//   console.log("number clicked", numberInputAsString);
-//   // calculate(numberInput, 5);
-
-//   // getting the number input (in string form and displaying it on screen)
-//   showInputOnDisplay(numberInputAsString);
-
-//   // now converting to int to be able to use with calculator
-//   const firstNumberInputAsFloat = parseFloat(numberInputAsString);
-//   // need to input these numbers into the calculate function
-//   // hard code 2nd number for now
-//   const secondNumberInputAsFloat = 2;
-//   calculate(firstNumberInputAsFloat, secondNumberInputAsFloat);
-// };
 
 const handleNumberButtonClick = (event: Event) => {
-  const target = event.target as HTMLElement;
-  console.log(target);
+  // const target = event.target as HTMLElement;
+  // // console.log(target);
+  // const numberInputAsString = target.innerHTML;
+  // console.log("number clicked", numberInputAsString);
+  // // calculate(numberInput, 5);
 
-  // console.log(target);
-  const buttonContent = target.innerHTML;
-  console.log("number clicked", buttonContent);
-
-  if (buttonContent === "+" || "-" || "/" || "*") {
-    console.log("targetting certain bit", buttonContent);
-  }
-  // console.log(numberInputAsString);
-
-  // calculate(numberInput, 5);
-
-  // getting the number input (in string form and displaying it on screen)
-  // showInputOnDisplay(numberInputAsString);
-
-  // now converting to int to be able to use with calculator
+  // // now converting to int to be able to use with calculator
   // const firstNumberInputAsFloat = parseFloat(numberInputAsString);
-  // need to input these numbers into the calculate function
-  // hard code 2nd number for now
+  // // need to input these numbers into the calculate function
+  // // hard code 2nd number for now
   // const secondNumberInputAsFloat = 2;
-  // calculate(firstNumberInputAsFloat, secondNumberInputAsFloat);
+  // calculate(
+  //   firstNumberInputAsFloat,
+  //   secondNumberInputAsFloat,
+  //   operationClicked
+  // );
+  const target = event.target as HTMLButtonElement;
+  const value = target.dataset.value;
+  if (value !== undefined) {
+    if (currentCalculation.operationClicked === "") {
+      currentCalculation.firstInputNumber = parseFloat(value);
+    } else {
+      currentCalculation.secondInputNumber = parseFloat(value);
+    }
+    updateScreen();
+  }
 };
 
 // --- EVENT LISTENERS ---
 
-// clearButton.addEventListener("click", handleClearButtonClick);
-// deleteButton.addEventListener("click", handleDeleteButtonClick);
-// divide.addEventListener("click", handleDivideButtonClick);
-// multiply.addEventListener("click", handleMultiplyButtonClick);
-// subtract.addEventListener("click", handleSubtractButtonClick);
-// addition.addEventListener("click", handleAdditionButtonClick);
+clearButton.addEventListener("click", handleClearButtonClick);
+deleteButton.addEventListener("click", handleDeleteButtonClick);
 buttons.forEach((button) => {
   button.addEventListener("click", handleNumberButtonClick);
 });
-
-// needs to listen to when button is clicked
-
-// needs to one of a few maths operations
-
-// addition
-// const value = number1 + number2;
-
-// subtraction
-// const value2 = number1 - number2;
-
-// multiplication
-// const value3 = number1 * number2;
-
-// division
-// const value4 = number1 / number2;
-
-// needs to output value
-
-// console.log(value);
-// console.log(value2);
-// console.log(value3);
-// console.log(value4);
-
-// --- FUNCTIONS ---
-
-// calculate function
-// const result = empty
-// const the first input number = whatever input is set as
-// const the second input number = whatever the input is set as
-// check that numbers aren't empty or null
-// then if statements to check which operator was use, and depending on that,
-// do return result = (the first input number) [operation] (the second input number)
-// else return error
-
-const calculate = (
-  firstInputNumber: number,
-  secondInputNumber: number
-): number => {
-  let result = 0;
-  firstInputNumber = firstInputNumber;
-  secondInputNumber = secondInputNumber;
-  //
-  result = firstInputNumber + secondInputNumber;
-  console.log("result", result);
-  return result;
-};
-
-// need a way to show the user what they've typed - using display
-
-let showInputOnDisplay = (numberInput: string) => {
-  display?.append(numberInput);
-};
+operations.forEach((operation) => {
+  operation.addEventListener("click", handleOperationButtonClick);
+});
+equalsButton.addEventListener("click", handleEqualsButtonClick);

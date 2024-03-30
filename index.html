@@ -11,28 +11,29 @@
       <h1>Calculator</h1>
         <div class="calculator">
           <!-- will need 'screen' so user can see what they're typing -->
-          <div class="calcaulator__screen calcaulator__screen--active" id="display"> </div>
+          <div class="calcaulator__screen calcaulator__screen--active" id="previous-entered-number"> </div>
+          <div class="calcaulator__screen calcaulator__screen--active" id="current-entered-number"> </div>
 
           <!-- will need a number pad that represents a calculator -->
           <button class="calculator__button calculator__button--active" id="clear-button">C</button>
           <button class="calculator__button calculator__button--active" id="delete-button">Del</button>
-          <button class="calculator__button calculator__button--active" id="divide">/</button>
-          <button class="calculator__button calculator__button--active" id="button">7</button>
-          <button class="calculator__button calculator__button--active" id="button">8</button>
-          <button class="calculator__button calculator__button--active" id="button">9</button>
-          <button class="calculator__button calculator__button--active" id="multiply">*</button>
-          <button class="calculator__button calculator__button--active" id="button">4</button>
-          <button class="calculator__button calculator__button--active" id="button">5</button>
-          <button class="calculator__button calculator__button--active" id="button">6</button>
-          <button class="calculator__button calculator__button--active" id="subtract">-</button>
-          <button class="calculator__button calculator__button--active" id="button">1</button>
-          <button class="calculator__button calculator__button--active" id="button">2</button>
-          <button class="calculator__button calculator__button--active" id="button">3</button>
-          <button class="calculator__button calculator__button--active" id="addition">+</button>
-          <button class="calculator__button calculator__button--active" id="button">.</button>
-          <button class="calculator__button calculator__button--active" id="button">0</button>
-          <button class="calculator__button calculator__button--active" id="button">=</button>
-
+          <button class="calculator__button calculator__button--active operation" >/</button>
+          <button class="calculator__button calculator__button--active number" >7</button>
+          <button class="calculator__button calculator__button--active number" >8</button>
+          <button class="calculator__button calculator__button--active number" >9</button>
+          <button class="calculator__button calculator__button--active operation" >*</button>
+          <button class="calculator__button calculator__button--active number" >4</button>
+          <button class="calculator__button calculator__button--active number" >5</button>
+          <button class="calculator__button calculator__button--active number" >6</button>
+          <button class="calculator__button calculator__button--active operation" >-</button>
+          <button class="calculator__button calculator__button--active number" >1</button>
+          <button class="calculator__button calculator__button--active number" >2</button>
+          <button class="calculator__button calculator__button--active number" >3</button>
+          <button class="calculator__button calculator__button--active operation" >+</button>
+          <button class="calculator__button calculator__button--active number" >.</button>
+          <button class="calculator__button calculator__button--active number" >0</button>
+          <button class="calculator__button calculator__button--active number" >=</button>
+          <!-- note: shouldn't assign same id to multiple things, have used classes instead -->
         </div>
       </h1>
     </main>
