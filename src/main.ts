@@ -1,10 +1,10 @@
-// calculator object to store incoming information ?
+// calculator type
 type calculation = {
   firstInputNumber: number;
   secondInputNumber: number;
   operationClicked: string;
 };
-
+// calculator object
 const currentCalculation: calculation = {
   firstInputNumber: 0,
   secondInputNumber: 0,
@@ -40,50 +40,23 @@ if (
 
 // --- FUNCTIONS ---
 
-// const calculate = (
-//   firstInputNumber: number,
-//   secondInputNumber: number,
-//   operationClicked: string
-// ): number => {
-//   let result = 0;
-//   const firstNumber = firstInputNumber;
-//   const secondNumber = secondInputNumber;
-//   if (operationClicked === "+") {
-//     return (result = firstNumber + secondNumber);
-//   } else if (operationClicked === "-") {
-//     return (result = firstNumber - secondNumber);
-//   } else if (operationClicked === "*") {
-//     return (result = firstNumber * secondNumber);
-//   } else {
-//     return (result = firstNumber / secondNumber);
-//   }
-// };
-
-const calculate = () => {
+const calculate = (
+  firstInputNumber: number,
+  secondInputNumber: number,
+  operationClicked: string
+): number => {
   let result = 0;
-  switch (currentCalculation.operationClicked) {
-    case "+":
-      result =
-        currentCalculation.firstInputNumber +
-        currentCalculation.secondInputNumber;
-      break;
-    case "-":
-      result =
-        currentCalculation.firstInputNumber -
-        currentCalculation.secondInputNumber;
-      break;
-    case "*":
-      result =
-        currentCalculation.firstInputNumber *
-        currentCalculation.secondInputNumber;
-      break;
-    case "/":
-      result =
-        currentCalculation.firstInputNumber /
-        currentCalculation.secondInputNumber;
-      break;
+  const firstNumber = firstInputNumber;
+  const secondNumber = secondInputNumber;
+  if (operationClicked === "+") {
+    return (result = firstNumber + secondNumber);
+  } else if (operationClicked === "-") {
+    return (result = firstNumber - secondNumber);
+  } else if (operationClicked === "*") {
+    return (result = firstNumber * secondNumber);
+  } else {
+    return (result = firstNumber / secondNumber);
   }
-  currentEnteredNumber!.textContent = result.toString();
 };
 
 // need a way to show the user what they've typed
@@ -118,25 +91,12 @@ const handleEqualsButtonClick = (event: Event) => {
 };
 
 const handleNumberButtonClick = (event: Event) => {
-  // const target = event.target as HTMLElement;
-  // // console.log(target);
-  // const numberInputAsString = target.innerHTML;
-  // console.log("number clicked", numberInputAsString);
-  // // calculate(numberInput, 5);
-
-  // // now converting to int to be able to use with calculator
-  // const firstNumberInputAsFloat = parseFloat(numberInputAsString);
-  // // need to input these numbers into the calculate function
-  // // hard code 2nd number for now
-  // const secondNumberInputAsFloat = 2;
-  // calculate(
-  //   firstNumberInputAsFloat,
-  //   secondNumberInputAsFloat,
-  //   operationClicked
-  // );
   const target = event.target as HTMLButtonElement;
-  const value = target.dataset.value;
-  if (value !== undefined) {
+  const value = target.textContent;
+  // saving the inputs as the first or second number
+  // depends on if the operation button has been clicked
+  // checking if value is undefined, or has undefined type
+  if (value !== undefined && value != undefined) {
     if (currentCalculation.operationClicked === "") {
       currentCalculation.firstInputNumber = parseFloat(value);
     } else {
