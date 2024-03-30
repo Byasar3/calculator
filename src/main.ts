@@ -72,8 +72,11 @@ const operationChosen = () => {};
 // --- EVENT HANDLERS ---
 
 const handleClearButtonClick = (event: Event) => {
-  const target = event.target as HTMLElement;
-  console.log(target);
+  // reset all values to their defaults
+  currentCalculation.firstInputNumber = 0;
+  currentCalculation.secondInputNumber = 0;
+  currentCalculation.operationClicked = "";
+  updateScreen();
 };
 
 const handleDeleteButtonClick = (event: Event) => {
