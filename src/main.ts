@@ -1,13 +1,13 @@
 // calculator type
 type calculation = {
-  firstInputNumber: number;
-  secondInputNumber: number;
+  firstInputNumber: string;
+  secondInputNumber: string;
   operationClicked: string;
 };
 // calculator object
 const currentCalculation: calculation = {
-  firstInputNumber: 0,
-  secondInputNumber: 0,
+  firstInputNumber: "",
+  secondInputNumber: "",
   operationClicked: "",
 };
 
@@ -41,13 +41,13 @@ if (
 // --- FUNCTIONS ---
 
 const calculate = (
-  firstInputNumber: number,
-  secondInputNumber: number,
+  firstInputNumber: string,
+  secondInputNumber: string,
   operationClicked: string
 ): number => {
   let result = 0;
-  const firstNumber = firstInputNumber;
-  const secondNumber = secondInputNumber;
+  const firstNumber = parseFloat(firstInputNumber);
+  const secondNumber = parseFloat(secondInputNumber);
   if (operationClicked === "+") {
     return (result = firstNumber + secondNumber);
   } else if (operationClicked === "-") {
@@ -62,6 +62,7 @@ const calculate = (
 // need a way to show the user what they've typed
 
 let updateScreen = () => {
+  // Concatenate input strings with operation in between
   currentEnteredNumber.textContent = `${currentCalculation.firstInputNumber} ${currentCalculation.operationClicked} ${currentCalculation.secondInputNumber}`;
 };
 
@@ -71,16 +72,27 @@ const operationChosen = () => {};
 
 // --- EVENT HANDLERS ---
 
-const handleClearButtonClick = (event: Event) => {
+const handleClearButtonClick = () => {
   // reset all values to their defaults
-  currentCalculation.firstInputNumber = 0;
-  currentCalculation.secondInputNumber = 0;
+  currentCalculation.firstInputNumber = "";
+  currentCalculation.secondInputNumber = "";
   currentCalculation.operationClicked = "";
   updateScreen();
 };
 
-const handleDeleteButtonClick = (event: Event) => {
-  console.log(event);
+const handleDeleteButtonClick = () => {
+  // delete the last entered digit -> can be from 1st input, operator or 2nd input
+  // if second input is not 0, then delete last digit from it
+  if (currentCalculation.secondInputNumber !== "") {
+    currentCalculation.secondInputNumber =
+      currentCalculation.secondInputNumber.slice(0, -1);
+  } else if (currentCalculation.operationClicked !== "") {
+    currentCalculation.operationClicked = "";
+  } else {
+    currentCalculation.firstInputNumber =
+      currentCalculation.firstInputNumber.slice(0, -1);
+  }
+  updateScreen();
 };
 
 const handleOperationButtonClick = (event: Event) => {
@@ -97,13 +109,13 @@ const handleNumberButtonClick = (event: Event) => {
   const target = event.target as HTMLButtonElement;
   const value = target.textContent;
   // saving the inputs as the first or second number
-  // depends on if the operation button has been clicked
   // checking if value is undefined, or has undefined type
-  if (value !== undefined && value != undefined) {
+  if (value != null) {
+    // depends on if the operation button has been clicked
     if (currentCalculation.operationClicked === "") {
-      currentCalculation.firstInputNumber = parseFloat(value);
+      currentCalculation.firstInputNumber += value;
     } else {
-      currentCalculation.secondInputNumber = parseFloat(value);
+      currentCalculation.secondInputNumber += value;
     }
     updateScreen();
   }
