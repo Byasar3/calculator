@@ -99,10 +99,28 @@ const handleOperationButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
   const operationClicked = target.innerHTML;
   currentCalculation.operationClicked = operationClicked;
+  updateScreen();
 };
 
 const handleEqualsButtonClick = (event: Event) => {
-  return event.target;
+  // check if both input numbers and the operation are present
+  if (
+    currentCalculation.firstInputNumber !== "" &&
+    currentCalculation.secondInputNumber !== "" &&
+    currentCalculation.operationClicked !== ""
+  ) {
+    // do the calculation by calling calculate function
+    const result = calculate(
+      currentCalculation.firstInputNumber,
+      currentCalculation.secondInputNumber,
+      currentCalculation.operationClicked
+    );
+    currentEnteredNumber.textContent = result.toString();
+    // reset input values for next calculation
+    currentCalculation.firstInputNumber = "";
+    currentCalculation.secondInputNumber = "";
+    currentCalculation.operationClicked = "";
+  }
 };
 
 const handleNumberButtonClick = (event: Event) => {
