@@ -66,10 +66,6 @@ let updateScreen = () => {
   currentEnteredNumber.textContent = `${currentCalculation.firstInputNumber} ${currentCalculation.operationClicked} ${currentCalculation.secondInputNumber}`;
 };
 
-// need a function to determine the operation chosen
-
-const operationChosen = () => {};
-
 // --- EVENT HANDLERS ---
 
 const handleClearButtonClick = () => {
@@ -98,7 +94,9 @@ const handleDeleteButtonClick = () => {
 const handleOperationButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
   const operationClicked = target.innerHTML;
-  currentCalculation.operationClicked = operationClicked;
+  if (currentCalculation.operationClicked === "") {
+    currentCalculation.operationClicked = operationClicked;
+  }
   updateScreen();
 };
 
