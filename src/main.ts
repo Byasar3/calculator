@@ -114,8 +114,9 @@ const handleEqualsButtonClick = (event: Event) => {
       currentCalculation.operationClicked
     );
     currentEnteredNumber.textContent = result.toString();
+    // update the first input number with the result for subsequent calculations
+    currentCalculation.firstInputNumber = result.toString();
     // reset input values for next calculation
-    currentCalculation.firstInputNumber = "";
     currentCalculation.secondInputNumber = "";
     currentCalculation.operationClicked = "";
   }
