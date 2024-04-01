@@ -1,0 +1,17 @@
+@use "./variables" as *;
+
+.calculator {
+  background-color: $secondary-colour;
+  padding: 10px;
+  display: flex;
+  &__screen-section {
+    display: flex;
+    padding: 20px;
+  }
+
+  &__number-pad {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
