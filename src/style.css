@@ -1,20 +1,29 @@
 .calculator {
-  background-color: black;
-  padding: 10px;
+  background-color: white;
+  padding: 50px;
   display: flex;
+  flex-direction: column;
 }
 .calculator__screen-section {
   display: flex;
   padding: 20px;
+  background-color: white;
+  border: solid 2px black;
 }
 .calculator__number-pad {
+  border: solid 2px blue;
+  background-color: aqua;
   display: grid;
   gap: 5px;
   grid-template-columns: repeat(3, 1fr);
+}
+.calculator__number-pad__button {
+  background-color: yellow;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: grey;
 }/*# sourceMappingURL=style.css.map */
