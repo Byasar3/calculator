@@ -54,16 +54,26 @@ const calculate = (
     return (result = firstNumber - secondNumber);
   } else if (operationClicked === "*") {
     return (result = firstNumber * secondNumber);
-  } else {
+  } else if (operationClicked === "/") {
     return (result = firstNumber / secondNumber);
+  } else if (secondNumber === 0) {
+    throw new Error("division by zero");
+  } else {
+    throw new Error("invalid calculation");
   }
 };
 
 // need a way to show the user what they've typed
 
 let updateScreen = () => {
-  // Concatenate input strings with operation in between
-  currentEnteredNumber.textContent = `${currentCalculation.firstInputNumber} ${currentCalculation.operationClicked} ${currentCalculation.secondInputNumber}`;
+  // object destructuring to extract values from 'currentCalculation'
+  const { firstInputNumber, operationClicked, secondInputNumber } =
+    currentCalculation;
+  // concatonate these values
+  const screenContent = `${firstInputNumber} ${operationClicked} ${secondInputNumber}`;
+  // assign the above values to the textContent property of currentEnteredNumber
+  // .trim() to remove the whitespace from start and end of string
+  currentEnteredNumber.textContent = screenContent.trim();
 };
 
 // --- EVENT HANDLERS ---
@@ -93,7 +103,8 @@ const handleDeleteButtonClick = () => {
 
 const handleOperationButtonClick = (event: Event) => {
   const target = event.target as HTMLElement;
-  const operationClicked = target.innerHTML;
+  // added .trim() as there was white space somewhere, which was throwing an error and the operation was not being read properly
+  const operationClicked = target.innerHTML.trim();
   if (currentCalculation.operationClicked === "") {
     currentCalculation.operationClicked = operationClicked;
   }
