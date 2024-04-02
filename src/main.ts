@@ -102,16 +102,7 @@ const handleEqualsButtonClick = () => {
 
 const handleNumberButtonClick = (event: Event) => {
   const target = event.target as HTMLButtonElement;
-  console.log(event);
-  console.log(target);
-  
-  
-  
   const value = target.textContent;
-  console.log(value.length);
-  console.log(value);
-  
-  
   // saving the inputs as the first or second number
   // checking if value is undefined, or has undefined type
   if (value != null) {
@@ -121,8 +112,6 @@ const handleNumberButtonClick = (event: Event) => {
     } else {
       currentCalculation.secondInputNumber += value;
     }
-    console.log(currentCalculation.firstInputNumber);
-    
     updateScreen();
   }
 };
@@ -148,18 +137,6 @@ const calculate = (
 ): number => {
   let result = 0;
   const firstNumber = Number(firstInputNumber);
-  console.log(
-    "this is the input as string form in calculate function : ",
-    firstInputNumber
-  );
-
-  console.log(
-    "This is the input after it has been parsed, in calculate function: ",
-    firstNumber
-  );
-  console.log(typeof firstInputNumber);
-  
-
   const secondNumber = parseFloat(secondInputNumber.trim());
   if (operationClicked === "+") {
     return (result = firstNumber + secondNumber);
