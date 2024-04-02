@@ -38,46 +38,6 @@ if (
   throw new Error("Issue with selectors");
 }
 
-// --- FUNCTIONS ---
-
-const calculate = (
-  firstInputNumber: string,
-  secondInputNumber: string,
-  operationClicked: string
-): number => {
-  let result = 0;
-  const firstNumber = parseFloat(firstInputNumber);
-  console.log(firstNumber);
-
-  const secondNumber = parseFloat(secondInputNumber);
-  if (operationClicked === "+") {
-    return (result = firstNumber + secondNumber);
-  } else if (operationClicked === "-") {
-    return (result = firstNumber - secondNumber);
-  } else if (operationClicked === "×") {
-    return (result = firstNumber * secondNumber);
-  } else if (operationClicked === "÷") {
-    return (result = firstNumber / secondNumber);
-  } else if (secondNumber === 0) {
-    throw new Error("division by zero");
-  } else {
-    throw new Error("invalid calculation");
-  }
-};
-
-// need a way to show the user what they've typed
-
-let updateScreen = () => {
-  // object destructuring to extract values from 'currentCalculation'
-  const { firstInputNumber, operationClicked, secondInputNumber } =
-    currentCalculation;
-  // concatonate these values
-  const screenContent = `${firstInputNumber} ${operationClicked} ${secondInputNumber}`;
-  // assign the above values to the textContent property of currentEnteredNumber
-  // .trim() to remove the whitespace from start and end of string
-  currentEnteredNumber.textContent = screenContent.trim();
-};
-
 // --- EVENT HANDLERS ---
 
 const handleClearButtonClick = () => {
@@ -113,7 +73,7 @@ const handleOperationButtonClick = (event: Event) => {
   updateScreen();
 };
 
-const handleEqualsButtonClick = (event: Event) => {
+const handleEqualsButtonClick = () => {
   // check if both input numbers and the operation are present
   if (
     currentCalculation.firstInputNumber !== "" &&
@@ -126,6 +86,11 @@ const handleEqualsButtonClick = (event: Event) => {
       currentCalculation.secondInputNumber,
       currentCalculation.operationClicked
     );
+    console.log(
+      "This is the input when equals is clicked: ",
+      currentCalculation.firstInputNumber
+    );
+
     currentEnteredNumber.textContent = result.toString();
     // update the first input number with the result for subsequent calculations
     currentCalculation.firstInputNumber = result.toString();
@@ -137,7 +102,16 @@ const handleEqualsButtonClick = (event: Event) => {
 
 const handleNumberButtonClick = (event: Event) => {
   const target = event.target as HTMLButtonElement;
+  console.log(event);
+  console.log(target);
+  
+  
+  
   const value = target.textContent;
+  console.log(value.length);
+  console.log(value);
+  
+  
   // saving the inputs as the first or second number
   // checking if value is undefined, or has undefined type
   if (value != null) {
@@ -147,6 +121,8 @@ const handleNumberButtonClick = (event: Event) => {
     } else {
       currentCalculation.secondInputNumber += value;
     }
+    console.log(currentCalculation.firstInputNumber);
+    
     updateScreen();
   }
 };
@@ -162,3 +138,53 @@ operations.forEach((operation) => {
   operation.addEventListener("click", handleOperationButtonClick);
 });
 equalsButton.addEventListener("click", handleEqualsButtonClick);
+
+// --- FUNCTIONS ---
+
+const calculate = (
+  firstInputNumber: string,
+  secondInputNumber: string,
+  operationClicked: string
+): number => {
+  let result = 0;
+  const firstNumber = Number(firstInputNumber);
+  console.log(
+    "this is the input as string form in calculate function : ",
+    firstInputNumber
+  );
+
+  console.log(
+    "This is the input after it has been parsed, in calculate function: ",
+    firstNumber
+  );
+  console.log(typeof firstInputNumber);
+  
+
+  const secondNumber = parseFloat(secondInputNumber.trim());
+  if (operationClicked === "+") {
+    return (result = firstNumber + secondNumber);
+  } else if (operationClicked === "-") {
+    return (result = firstNumber - secondNumber);
+  } else if (operationClicked === "x") {
+    return (result = firstNumber * secondNumber);
+  } else if (operationClicked === "÷") {
+    return (result = firstNumber / secondNumber);
+  } else if (secondNumber === 0) {
+    throw new Error("division by zero");
+  } else {
+    throw new Error("invalid calculation");
+  }
+};
+
+// need a way to show the user what they've typed
+
+let updateScreen = () => {
+  // object destructuring to extract values from 'currentCalculation'
+  const { firstInputNumber, operationClicked, secondInputNumber } =
+    currentCalculation;
+  // concatonate these values
+  const screenContent = `${firstInputNumber} ${operationClicked} ${secondInputNumber}`;
+  // assign the above values to the textContent property of currentEnteredNumber
+  // .trim() to remove the whitespace from start and end of string
+  currentEnteredNumber.textContent = screenContent.trim();
+};
