@@ -5,23 +5,51 @@
   padding: 50px;
   display: flex;
   flex-direction: column;
+  min-width: min-content;
+  margin-top: 20%;
 
   &__screen-section {
     display: flex;
     padding: 20px;
     background-color: $primary-colour;
-    border: solid 2px black;
+    border: solid 2px $secondary-colour;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
   }
 
   &__number-pad {
-    border: solid 2px blue;
-    background-color: aqua;
+    margin: 0;
+    border: solid 2px $secondary-colour;
+    background-color: $primary-colour;
     display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(3, 1fr);
+    gap: 5%;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+    padding-bottom: 50px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 
     &__button {
-      background-color: yellow;
+      background-color: $primary-colour;
+      border-radius: 50px;
+    }
+
+    &__clear-button {
+      background-color: $clear-button-background;
+    }
+
+    &__delete-button {
+      background-color: $delete-button-background;
+      color: $primary-colour;
+      grid-column: 4;
+    }
+
+    &__operation {
+      background-color: $operation-background;
+    }
+
+    &__equals {
+      background-color: $equals-background;
     }
   }
 }

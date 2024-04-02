@@ -25,21 +25,16 @@
         <!-- will need a number pad that represents a calculator -->
         <div class="calculator__number-pad">
           <button
-            class="calculator__number-pad__button calculator__number-pad__button--active"
+            class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__clear-button"
             id="clear-button"
           >
             C
           </button>
           <button
-            class="calculator__number-pad__button calculator__number-pad__button--active"
+            class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__delete-button"
             id="delete-button"
           >
             Del
-          </button>
-          <button
-            class="calculator__number-pad__button calculator__number-pad__button--active operation"
-          >
-            /
           </button>
           <button
             class="calculator__number-pad__button calculator__number-pad__button--active number"
@@ -57,9 +52,9 @@
             9
           </button>
           <button
-            class="calculator__number-pad__button calculator__number-pad__button--active operation"
+            class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__operation operation"
           >
-            *
+            ÷
           </button>
           <button
             class="calculator__number-pad__button calculator__number-pad__button--active number"
@@ -77,9 +72,9 @@
             6
           </button>
           <button
-            class="calculator__number-pad__button calculator__number-pad__button--active operation"
+            class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__operation operation"
           >
-            -
+            ×
           </button>
           <button
             class="calculator__number-pad__button calculator__number-pad__button--active number"
@@ -97,9 +92,9 @@
             3
           </button>
           <button
-            class="calculator__number-pad__button calculator__number-pad__button--active operation"
+            class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__operation operation"
           >
-            +
+            -
           </button>
           <button
             class="calculator__number-pad__button calculator__number-pad__button--active number"
@@ -112,10 +107,15 @@
             0
           </button>
           <button
-            class="calculator__number-pad__button calculator__number-pad__button--active"
+            class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__equals"
             id="equals"
           >
             =
+          </button>
+          <button
+            class="calculator__number-pad__button calculator__number-pad__button--active operation calculator__number-pad__operation operation"
+          >
+            +
           </button>
           <!-- note: shouldn't assign same id to multiple things, have used classes instead -->
         </div>

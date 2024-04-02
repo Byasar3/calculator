@@ -1,6 +1,15 @@
-// colours
+@import url("https://fonts.googleapis.com/css2?family=Micro+5&display=swap");
 
+// colours
 $primary-colour: white;
 $secondary-colour: black;
+$clear-button-background: rgb(230, 83, 83);
+$delete-button-background: darkred;
+$operation-background: bisque;
+$equals-background: rgb(240, 164, 71);
 
 // fonts
+$main-font: "Micro 5", sans-serif;
+
+//font-sizes
+$medium-size: 30px;

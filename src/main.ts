@@ -1,11 +1,11 @@
 // calculator type
-type calculation = {
+type Calculation = {
   firstInputNumber: string;
   secondInputNumber: string;
   operationClicked: string;
 };
 // calculator object
-const currentCalculation: calculation = {
+const currentCalculation: Calculation = {
   firstInputNumber: "",
   secondInputNumber: "",
   operationClicked: "",
@@ -47,14 +47,16 @@ const calculate = (
 ): number => {
   let result = 0;
   const firstNumber = parseFloat(firstInputNumber);
+  console.log(firstNumber);
+
   const secondNumber = parseFloat(secondInputNumber);
   if (operationClicked === "+") {
     return (result = firstNumber + secondNumber);
   } else if (operationClicked === "-") {
     return (result = firstNumber - secondNumber);
-  } else if (operationClicked === "*") {
+  } else if (operationClicked === "×") {
     return (result = firstNumber * secondNumber);
-  } else if (operationClicked === "/") {
+  } else if (operationClicked === "÷") {
     return (result = firstNumber / secondNumber);
   } else if (secondNumber === 0) {
     throw new Error("division by zero");
