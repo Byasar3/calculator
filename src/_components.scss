@@ -5,7 +5,7 @@
   padding: 50px;
   display: flex;
   flex-direction: column;
-  min-width: min-content;
+  width: 100%;
   margin-top: 20%;
 
   &__screen-section {
@@ -15,6 +15,7 @@
     border: solid 2px $secondary-colour;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    
   }
 
   &__number-pad {
