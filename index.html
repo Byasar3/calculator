@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <script type="module" crossorigin src="./assets/index-BtHgTQ8S.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DtJbdWaf.css">
+  </head>
+
+  <body>
+    <main>
+      <div class="calculator">
+        <!-- will need 'screen' so user can see what they're typing -->
+        <div class="calculator__screen-section">
+          <div
+            class="calculator__screen-section__screen-previous calculator__screen-section__screen-previous--active"
+            id="previous-entered-number"
+          ></div>
+          <div
+            class="calculator__screen-section__screen-current calculator__screen-section__screen-cur--active"
+            id="current-entered-number"
+          ></div>
+        </div>
+
+        <!-- will need a number pad that represents a calculator -->
+        <div class="calculator__number-pad">
+          <button class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__clear-button" id="clear-button">C</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__delete-button" id="delete-button">Del</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">7</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">8</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">9</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__operation operation" >÷</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">4</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">5</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">6</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__operation operation">x</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">1</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">2</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">3</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__operation operation">-</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">.</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active number">0</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active calculator__number-pad__equals" id="equals">=</button>
+          <button class="calculator__number-pad__button calculator__number-pad__button--active operation calculator__number-pad__operation operation">+</button>
+          <!-- note: shouldn't assign same id to multiple things, have used classes instead -->
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
