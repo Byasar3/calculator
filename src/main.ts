@@ -86,11 +86,6 @@ const handleEqualsButtonClick = () => {
       currentCalculation.secondInputNumber,
       currentCalculation.operationClicked
     );
-    console.log(
-      "This is the input when equals is clicked: ",
-      currentCalculation.firstInputNumber
-    );
-
     currentEnteredNumber.textContent = result.toString();
     // update the first input number with the result for subsequent calculations
     currentCalculation.firstInputNumber = result.toString();
@@ -135,17 +130,17 @@ const calculate = (
   secondInputNumber: string,
   operationClicked: string
 ): number => {
-  let result = 0;
+// let result = 0;
   const firstNumber = Number(firstInputNumber);
   const secondNumber = parseFloat(secondInputNumber.trim());
   if (operationClicked === "+") {
-    return (result = firstNumber + secondNumber);
+    return (firstNumber + secondNumber);
   } else if (operationClicked === "-") {
-    return (result = firstNumber - secondNumber);
+    return (firstNumber - secondNumber);
   } else if (operationClicked === "x") {
-    return (result = firstNumber * secondNumber);
+    return (firstNumber * secondNumber);
   } else if (operationClicked === "÷") {
-    return (result = firstNumber / secondNumber);
+    return (firstNumber / secondNumber);
   } else if (secondNumber === 0) {
     throw new Error("division by zero");
   } else {
