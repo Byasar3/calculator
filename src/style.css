@@ -30,10 +30,10 @@
 .calculator__number-pad__button {
   background-color: white;
   border-radius: 50px;
+  transition: 0.5s;
 }
 .calculator__number-pad__button:hover {
   background-color: rgb(177, 218, 239);
-  transition: 0.5s;
 }
 .calculator__number-pad__clear-button {
   background-color: rgb(230, 83, 83);
