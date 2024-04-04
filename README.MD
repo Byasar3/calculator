@@ -5,7 +5,7 @@
 
 ---
 
-<p> In this project the end goal was to have a site that can accept inputs, do some calculations and display the correct output. Inputs will be generated from users clicking on the calculator buttons.
+<p> In this project, the end goal was to have a site that can accept inputs, do some calculations and display the correct output. Inputs will be generated from users clicking on the calculator buttons.
 </p>
 
 ###  🌱 MVP
