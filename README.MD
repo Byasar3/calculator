@@ -20,7 +20,7 @@ Started project by defining the MVP. The most integral logic of the application 
 - display the output
 </p>
 
-## 💬 How to use the calculator
+### 💬 How to use the calculator
 
 ---
 
@@ -28,7 +28,7 @@ Started project by defining the MVP. The most integral logic of the application 
 Head over to https://byasar3.github.io/calculator/ to try it out
 </p>
 
-## 💻 Tech Stack :
+### 💻 Tech Stack :
 
 ---
 
