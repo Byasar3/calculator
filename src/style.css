@@ -31,6 +31,10 @@
   background-color: white;
   border-radius: 50px;
 }
+.calculator__number-pad__button:hover {
+  background-color: rgb(198, 157, 198);
+  transition: 0.5s;
+}
 .calculator__number-pad__clear-button {
   background-color: rgb(230, 83, 83);
 }

@@ -33,6 +33,10 @@
     &__button {
       background-color: $primary-colour;
       border-radius: 50px;
+      &:hover {
+        background-color: $hover-colour;
+        transition: 0.5s;
+      }
     }
 
     &__clear-button {
